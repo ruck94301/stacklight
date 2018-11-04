@@ -3,7 +3,7 @@ import socket
 import time
 
 
-logging.basicConfig()
+logging.basicConfig(format='%(asctime)s\t%(message)s')
 logger = logging.getLogger(__name__)
 logger.setLevel('DEBUG')
 
@@ -50,3 +50,6 @@ if __name__ == '__main__':
     # s.send(command)
 
     time.sleep(3)
+    
+    logger.debug('exiting...')
+
