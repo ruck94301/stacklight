@@ -14,8 +14,8 @@ address = (HOST, PORT)
 
 if __name__ == '__main__':
     # neutral command
-    basis = ''.join(['W'] 
-        + [b.decode('hex') for b in ['00'] + ['64']*5 + ['64']]
+    basis = ''.join(
+        ['W'] + [b.decode('hex') for b in ['00'] + ['64']*5 + ['64']]
         )
         
     lamp_index = {
@@ -29,8 +29,8 @@ if __name__ == '__main__':
     # s = socket.socket()
 
     # stacklight off
-    command = ''.join(['W'] 
-        + [b.decode('hex') for b in ['00'] + ['00']*5 + ['00']]
+    command = ''.join(
+        ['W'] + [b.decode('hex') for b in ['00'] + ['00']*5 + ['00']]
         )
     logger.debug('command: %r' % command)
     # s.send(command)
@@ -52,4 +52,3 @@ if __name__ == '__main__':
     time.sleep(3)
     
     logger.debug('exiting...')
-
