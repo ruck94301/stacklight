@@ -13,8 +13,8 @@ PORT = 135
 address = (HOST, PORT)
 
 lamp_index = {
-    'red': 0, 
-    'yellow': 1, 
+    'red': 0,
+    'yellow': 1,
     'green': 2,
     'blue': 3,
     'white': 4,
@@ -53,30 +53,30 @@ def send(payload):
     return result
 
 
+if __name__ == '__main__':
+    # neutral command
+    basis = ''.join(
+        ['W'] + [b.decode('hex') for b in ['00'] + ['64']*5 + ['64']]
+        )
 
-# neutral command
-basis = ''.join(
-    ['W'] + [b.decode('hex') for b in ['00'] + ['64']*5 + ['64']]
-    )
-    
-# stacklight off
-command = ''.join(
-    ['W'] + [b.decode('hex') for b in ['00'] + ['00']*5 + ['00']]
-    )
-result = send(command)
+    # stacklight off
+    command = ''.join(
+        ['W'] + [b.decode('hex') for b in ['00'] + ['00']*5 + ['00']]
+        )
+    result = send(command)
 
-# stacklight red on
-i = lamp_index['red']
-command = basis[:2+i] + '01'.decode('hex') + basis[2+i+1:]
-result = send(command)
+    # stacklight red on
+    i = lamp_index['red']
+    command = basis[:2+i] + '01'.decode('hex') + basis[2+i+1:]
+    result = send(command)
 
-time.sleep(10)
+    time.sleep(10)
 
-# stacklight red off
-i = lamp_index['red']
-command = basis[:2+i] + '00'.decode('hex') + basis[2+i+1:]
-result = send(command)
+    # stacklight red off
+    i = lamp_index['red']
+    command = basis[:2+i] + '00'.decode('hex') + basis[2+i+1:]
+    result = send(command)
 
-time.sleep(10)
+    time.sleep(10)
 
-logger.debug('exiting...')
+    logger.debug('exiting...')
